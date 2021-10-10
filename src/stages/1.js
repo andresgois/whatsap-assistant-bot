@@ -5,25 +5,26 @@ function execute(user, msg){
 
     if(msg === '*'){
         banco.db[user].stage = 0;
+        banco.db[user].itens = [];
         return ["Pedido cancelado com sucesso"];
     }
     if(msg === '#'){
         banco.db[user].stage = 2;
-        return ["Estamps fechando seu pedido!"];
+        return ["Estamos fechando seu pedido, Ok?? "];
     }
 
     if(!cardapio.menu[msg]) {
         return [
-            "Código inválido, digite corretamente",
-            "```Digite # para finalizar ou * para continuar```"
+            "Código inválido, digite corretamente\n",
+            "```Digite # para finalizar o pedido ou * para Sair```"
         ];
     }
 
     banco.db[user].itens.push(cardapio.menu[msg]);
 
     return [
-        `Item(${cardapio.menu[msg].descricao}) adicionado com sucesso`,
-        "```Digite # para finalizar ou * para continuar```"
+        `Item(${cardapio.menu[msg].descricao}) adicionado com sucesso\n`,
+        "```Digite # para finalizar o pedido ou * para Sair```"
     ]
 }
 
