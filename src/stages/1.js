@@ -1,7 +1,30 @@
+const cardapio = require('../cardapio');
+const banco = require('../banco');
 
+function execute(user, msg){
 
-function execute(){
-    return "Digite o código para fazer o pedido";
+    if(msg === '*'){
+        banco.db[user].stage = 0;
+        return ["Pedido cancelado com sucesso"];
+    }
+    if(msg === '#'){
+        banco.db[user].stage = 2;
+        return ["Estamps fechando seu pedido!"];
+    }
+
+    if(!cardapio.menu[msg]) {
+        return [
+            "Código inválido, digite corretamente",
+            "```Digite # para finalizar ou * para continuar```"
+        ];
+    }
+
+    banco.db[user].itens.push(cardapio.menu[msg]);
+
+    return [
+        `Item(${cardapio.menu[msg].descricao}) adicionado com sucesso`,
+        "```Digite # para finalizar ou * para continuar```"
+    ]
 }
 
 exports.execute = execute;

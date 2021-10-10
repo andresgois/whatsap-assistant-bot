@@ -1,12 +1,11 @@
 const banco = {
-    "558587170638@c.us": {
+    "558586223169@c.us": {
         stage: 0,
+        itens: [],
     },
     user1: {
-        stage: 0,
-    },
-    user2: {
-        stage: 0,
+        stage: 1,
+        itens: [],
     },
 }
 
